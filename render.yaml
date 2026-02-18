@@ -60,7 +60,7 @@ services:
     name: fortnite-course-frontend
     env: docker
     dockerfilePath: ./frontend/Dockerfile
-    dockerContext: ./frontend
+    dockerContext: .
     plan: starter
     region: oregon
     buildCommand: ""
