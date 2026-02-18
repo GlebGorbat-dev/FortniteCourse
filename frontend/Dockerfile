@@ -23,11 +23,18 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY frontend/ .
 
+# Accept build arguments for Next.js public environment variables
+# Render passes these as environment variables during build
+ARG NEXT_PUBLIC_API_URL
+ARG NODE_ENV=production
+
 # Set environment variables for build
 # Next.js requires NEXT_PUBLIC_* vars to be available at build time
-# Render will pass this as an environment variable during build
-ENV NODE_ENV=production
-# NEXT_PUBLIC_API_URL will be set by Render from envVars during build
+ENV NODE_ENV=${NODE_ENV}
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+
+# Debug: Print the API URL during build (will be visible in Render logs)
+RUN echo "Building with NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}"
 
 # Build Next.js
 RUN npm run build

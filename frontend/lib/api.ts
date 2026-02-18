@@ -2,14 +2,16 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 
 
+
 // Get API URL from environment variable
-// In production on Render, this is set via NEXT_PUBLIC_API_URL env var
+// In production on Render, this is set via NEXT_PUBLIC_API_URL env var during build
 // During build, Next.js embeds this value into the client bundle
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
-// Log API URL in development to help debug
-if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+// Log API URL to help debug (both dev and prod)
+if (typeof window !== 'undefined') {
   console.log('[API] Using API URL:', API_URL)
+  console.log('[API] NEXT_PUBLIC_API_URL env var:', process.env.NEXT_PUBLIC_API_URL || 'NOT SET')
 }
 
 const api = axios.create({
