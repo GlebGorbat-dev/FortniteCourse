@@ -1,4 +1,7 @@
 # Frontend Dockerfile for Render deployment
+# This Dockerfile works when Docker Context is set to "." (repository root)
+# In Render: Dockerfile Path = "frontend/Dockerfile", Docker Context = "."
+
 FROM node:20-alpine AS base
 
 # Install dependencies only when needed
@@ -6,15 +9,15 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json* ./
+# Copy package files from frontend directory
+COPY frontend/package.json frontend/package-lock.json* ./
 RUN npm ci
 
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY frontend/ .
 
 # Set environment variables for build
 ARG NEXT_PUBLIC_API_URL

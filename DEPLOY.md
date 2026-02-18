@@ -11,7 +11,7 @@ git push origin main
 
 ### Step 2: Deploy on Render
 
-#### Option A: Using Blueprint (Recommended)
+#### Option A: Using Blueprint (Automatic)
 1. Go to https://dashboard.render.com
 2. Click "New +" → "Blueprint"
 3. Connect your GitHub repository
@@ -19,7 +19,10 @@ git push origin main
 5. Configure environment variables (see below)
 6. Deploy!
 
-#### Option B: Manual Setup
+#### Option B: Manual Setup (Step by Step)
+**See detailed guide: [DEPLOY_MANUAL.md](./DEPLOY_MANUAL.md)**
+
+Quick steps:
 1. Create PostgreSQL database first
 2. Create backend web service
 3. Create frontend web service
