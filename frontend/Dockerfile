@@ -10,15 +10,12 @@ RUN apk add --no-cache libc6-compat python3 make g++
 WORKDIR /app
 
 # Copy package files from frontend directory
-COPY frontend/package.json frontend/package-lock.json* ./
+COPY frontend/package.json ./
+COPY frontend/package-lock.json* ./
 
 # Install dependencies
-# Try npm ci first (faster, requires exact match), fallback to npm install
-RUN if [ -f package-lock.json ]; then \
-      npm ci --legacy-peer-deps --no-audit || npm install --legacy-peer-deps --no-audit; \
-    else \
-      npm install --legacy-peer-deps --no-audit; \
-    fi
+# Use npm install for better compatibility (npm ci requires exact lockfile match)
+RUN npm install --legacy-peer-deps --no-audit --prefer-offline
 
 # Rebuild the source code only when needed
 FROM base AS builder
