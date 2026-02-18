@@ -91,27 +91,27 @@ export default function CourseResources({ courseId }: CourseResourcesProps) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-white mb-6">Course resources</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Course resources</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {resources.map((resource) => (
           <div
             key={resource.id}
-            className="bg-slate-800 rounded-lg shadow-md p-6 border border-slate-700 hover:border-red-500 transition-colors cursor-pointer hover:bg-slate-750"
+            className="bg-slate-800 rounded-lg shadow-md p-4 sm:p-6 border border-slate-700 hover:border-red-500 transition-colors cursor-pointer hover:bg-slate-750"
             onClick={() => handleResourceClick(resource)}
           >
-            <div className="flex items-start gap-4">
-              <div className="text-4xl">{getResourceIcon(resource.resource_type)}</div>
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-white mb-2">{resource.title}</h3>
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="text-3xl sm:text-4xl flex-shrink-0">{getResourceIcon(resource.resource_type)}</div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-2 break-words">{resource.title}</h3>
                 {resource.description && (
-                  <p className="text-slate-300 text-sm mb-3">{resource.description}</p>
+                  <p className="text-xs sm:text-sm text-slate-300 mb-3 line-clamp-2">{resource.description}</p>
                 )}
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs px-2 py-1 bg-red-500/20 text-red-400 rounded border border-red-500/30">
                     {resource.resource_type.toUpperCase()}
                   </span>
                   {resource.file_name && (
-                    <span className="text-xs text-slate-300">{resource.file_name}</span>
+                    <span className="text-xs text-slate-300 truncate">{resource.file_name}</span>
                   )}
                 </div>
               </div>

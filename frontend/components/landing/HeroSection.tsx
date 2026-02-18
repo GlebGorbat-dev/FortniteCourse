@@ -81,15 +81,15 @@ export default function HeroSection() {
       
       <div className="absolute inset-0 bg-slate-900/60" />
 
-      <div className="relative z-10 flex-1 flex items-center justify-between px-4 py-16">
+      <div className="relative z-10 flex-1 flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <div 
-          className={`flex-1 text-center lg:text-left max-w-2xl transition-all duration-1000 ${
+          className={`flex-1 text-center lg:text-left max-w-2xl w-full transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           data-scroll-id="hero-text"
         >
           <h1 
-            className={`text-5xl md:text-7xl font-bold text-white mb-6 transition-all duration-1000 ${
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 transition-all duration-1000 ${
               elementsVisible['hero-text'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{
@@ -99,7 +99,7 @@ export default function HeroSection() {
             Welcome to the Fortnite course!
           </h1>
           <p 
-            className={`text-xl md:text-2xl text-slate-300 mb-8 transition-all duration-1000 delay-200 ${
+            className={`text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 mb-6 sm:mb-8 px-2 sm:px-0 transition-all duration-1000 delay-200 ${
               elementsVisible['hero-text'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{
@@ -110,7 +110,7 @@ export default function HeroSection() {
           </p>
           <button
             onClick={() => router.push('/platform')}
-            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg hover:scale-105 hover:shadow-xl active:scale-95 ${
+            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg text-base sm:text-lg transition-all duration-300 shadow-lg hover:scale-105 hover:shadow-xl active:scale-95 ${
               elementsVisible['hero-text'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{
@@ -122,7 +122,7 @@ export default function HeroSection() {
           </button>
         </div>
         <div 
-          className={`hidden lg:block w-3/4 max-w-3xl ml-8 transition-all duration-1000 ${
+          className={`hidden lg:block w-full lg:w-3/4 max-w-3xl lg:ml-8 mt-8 lg:mt-0 transition-all duration-1000 ${
             isVisible || elementsVisible['hero-video'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}
           data-scroll-id="hero-video"

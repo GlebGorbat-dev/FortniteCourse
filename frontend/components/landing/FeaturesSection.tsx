@@ -72,22 +72,22 @@ export default function FeaturesSection() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <h2 
           ref={titleRef}
           data-scroll-id="features-title"
-          className={`text-4xl font-bold text-center mb-12 text-white transition-all duration-1000 ${
+          className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-white transition-all duration-1000 ${
             visibleElements['features-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           Why choose our course?
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
               data-scroll-id={String(index)}
-              className={`relative bg-slate-700/50 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-500 border border-slate-600/50 overflow-hidden group ${
+              className={`relative bg-slate-700/50 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-500 border border-slate-600/50 overflow-hidden group ${
                 visibleElements[String(index)] 
                   ? 'opacity-100 translate-y-0 scale-100' 
                   : 'opacity-0 translate-y-10 scale-95'
@@ -106,13 +106,13 @@ export default function FeaturesSection() {
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl"></div>
               
               <div className="relative z-10">
-                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-red-400 transition-colors duration-300">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white group-hover:text-red-400 transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300">
+                <p className="text-sm sm:text-base text-slate-300 group-hover:text-slate-200 transition-colors duration-300">
                   {feature.description}
                 </p>
               </div>

@@ -149,34 +149,34 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-white">Account</h1>
+    <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-white">Account</h1>
       
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <Dashboard showTitle={false} />
       </div>
 
-      <div className="bg-slate-800 rounded-lg shadow-md p-6 max-w-2xl border border-slate-700">
-        <h2 className="text-xl font-semibold mb-4 text-white">Profile</h2>
-        <div className="space-y-4">
+      <div className="bg-slate-800 rounded-lg shadow-md p-4 sm:p-6 max-w-2xl border border-slate-700">
+        <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">Profile</h2>
+        <div className="space-y-3 sm:space-y-4">
           <div>
-            <label className="text-slate-400 block mb-1">Email:</label>
-            <p className="text-lg text-white">{user.email}</p>
+            <label className="text-xs sm:text-sm text-slate-400 block mb-1">Email:</label>
+            <p className="text-base sm:text-lg text-white break-words">{user.email}</p>
           </div>
           <div>
-            <label className="text-slate-400 block mb-1">Username:</label>
-            <p className="text-lg text-white">{user.username}</p>
+            <label className="text-xs sm:text-sm text-slate-400 block mb-1">Username:</label>
+            <p className="text-base sm:text-lg text-white">{user.username}</p>
           </div>
           {user.full_name && (
             <div>
-              <label className="text-slate-400 block mb-1">Full name:</label>
-              <p className="text-lg text-white">{user.full_name}</p>
+              <label className="text-xs sm:text-sm text-slate-400 block mb-1">Full name:</label>
+              <p className="text-base sm:text-lg text-white">{user.full_name}</p>
             </div>
           )}
           <div>
-            <label className="text-slate-400 block mb-1">Registered:</label>
-            <p className="text-lg text-white">
-              {new Date(user.created_at).toLocaleDateString('ru-RU', {
+            <label className="text-xs sm:text-sm text-slate-400 block mb-1">Registered:</label>
+            <p className="text-base sm:text-lg text-white">
+              {new Date(user.created_at).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'

@@ -69,21 +69,21 @@ export default function Dashboard({ showTitle = true }: DashboardProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-        {showTitle && <h1 className="text-3xl font-bold mb-8 text-white">My Courses</h1>}
+    <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
+        {showTitle && <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-white">My Courses</h1>}
 
       {courses.length === 0 ? (
-        <div className="bg-slate-800 rounded-lg shadow-md p-8 text-center border border-slate-700">
-          <p className="text-slate-300 mb-4">No courses available</p>
+        <div className="bg-slate-800 rounded-lg shadow-md p-6 sm:p-8 text-center border border-slate-700">
+          <p className="text-slate-300 mb-4 text-sm sm:text-base">No courses available</p>
           <Link
             href="/platform/courses"
-            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded transition-colors inline-block"
+            className="bg-red-600 hover:bg-red-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded transition-colors inline-block text-sm sm:text-base"
           >
             Browse courses
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {courses.map((course) => {
             const courseProgress = progress[course.id] || {
               progress_percentage: 0,
@@ -103,11 +103,11 @@ export default function Dashboard({ showTitle = true }: DashboardProps) {
                     className="w-full h-48 object-cover"
                   />
                 )}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-white">{course.title}</h3>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">{course.title}</h3>
                   
-                  <div className="mb-4">
-                    <div className="flex justify-between text-sm text-slate-300 mb-2">
+                  <div className="mb-3 sm:mb-4">
+                    <div className="flex justify-between text-xs sm:text-sm text-slate-300 mb-2">
                       <span>Progress</span>
                       <span>{courseProgress.progress_percentage.toFixed(1)}%</span>
                     </div>
@@ -117,14 +117,14 @@ export default function Dashboard({ showTitle = true }: DashboardProps) {
                         style={{ width: `${courseProgress.progress_percentage}%` }}
                       />
                     </div>
-                    <p className="text-sm text-slate-400 mt-2">
+                    <p className="text-xs sm:text-sm text-slate-400 mt-2">
                       {courseProgress.completed_lessons} of {courseProgress.total_lessons} lessons
                     </p>
                   </div>
 
                   <Link
                     href={`/platform/courses/${course.id}`}
-                    className="block w-full bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded transition-colors"
+                    className="block w-full bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded transition-colors text-sm sm:text-base"
                   >
                     Continue learning
                   </Link>

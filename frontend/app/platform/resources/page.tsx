@@ -61,13 +61,13 @@ export default function ResourcesPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-white">Resources</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-white">Resources</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {resources.map((resource) => (
           <div
             key={resource.id}
-            className="relative bg-slate-800 rounded-lg shadow-md p-6 hover:shadow-xl transition-all border border-slate-700 overflow-hidden group"
+            className="relative bg-slate-800 rounded-lg shadow-md p-4 sm:p-6 hover:shadow-xl transition-all border border-slate-700 overflow-hidden group"
           >
             <div
               className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity"
@@ -81,14 +81,14 @@ export default function ResourcesPage() {
             <div className="absolute inset-0 bg-slate-800/80 group-hover:bg-slate-800/70 transition-colors"></div>
             
             <div className="relative z-10">
-              <h3 className="text-xl font-semibold mb-2 text-white">{resource.title}</h3>
-              <p className="text-slate-300 mb-4">{resource.description}</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white">{resource.title}</h3>
+              <p className="text-sm sm:text-base text-slate-300 mb-4">{resource.description}</p>
               {resource.type === 'link' ? (
                 <a
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-red-400 hover:text-red-300 inline-flex items-center transition-colors font-medium"
+                  className="text-red-400 hover:text-red-300 inline-flex items-center transition-colors font-medium text-sm sm:text-base"
                 >
                   Open link →
                 </a>
@@ -96,7 +96,7 @@ export default function ResourcesPage() {
                 <a
                   href={resource.url}
                   download
-                  className="text-red-400 hover:text-red-300 inline-flex items-center transition-colors font-medium"
+                  className="text-red-400 hover:text-red-300 inline-flex items-center transition-colors font-medium text-sm sm:text-base"
                 >
                   Download file ↓
                 </a>

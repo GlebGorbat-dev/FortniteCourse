@@ -147,7 +147,7 @@ export default function CourseDetailPage() {
             )}
             <button
               onClick={() => router.push('/platform/courses')}
-              className="bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded transition-colors"
+              className="bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded transition-colors text-sm sm:text-base"
             >
               Back to courses
             </button>
@@ -158,15 +158,15 @@ export default function CourseDetailPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4 text-white">{course.title}</h1>
-      <p className="text-slate-300 mb-8">{course.description}</p>
+    <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">{course.title}</h1>
+      <p className="text-sm sm:text-base text-slate-300 mb-4 sm:mb-6 md:mb-8">{course.description}</p>
 
       <div>
-        <div className="flex gap-4 mb-6 border-b border-slate-700">
+        <div className="flex gap-2 sm:gap-4 mb-4 sm:mb-6 border-b border-slate-700 overflow-x-auto">
           <button
             onClick={() => setActiveTab('lessons')}
-            className={`px-6 py-3 font-semibold transition-colors ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-colors whitespace-nowrap text-sm sm:text-base ${
               activeTab === 'lessons'
                 ? 'text-red-400 border-b-2 border-red-500 bg-slate-800/50'
                 : 'text-slate-300 hover:text-white bg-transparent'
@@ -176,7 +176,7 @@ export default function CourseDetailPage() {
           </button>
           <button
             onClick={() => setActiveTab('resources')}
-            className={`px-6 py-3 font-semibold transition-colors ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-colors whitespace-nowrap text-sm sm:text-base ${
               activeTab === 'resources'
                 ? 'text-red-400 border-b-2 border-red-500 bg-slate-800/50'
                 : 'text-slate-300 hover:text-white bg-transparent'

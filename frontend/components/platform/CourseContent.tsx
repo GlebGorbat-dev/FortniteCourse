@@ -159,27 +159,27 @@ export default function CourseContent({ course }: CourseContentProps) {
   const totalLessons = course.modules.reduce((sum, module) => sum + module.lessons.length, 0)
 
   return (
-    <div className="space-y-6">
-      <div className="bg-slate-800 rounded-lg shadow-md p-6 border border-slate-700">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="bg-slate-800 rounded-lg shadow-md p-4 sm:p-6 border border-slate-700">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-lg font-semibold text-white">Course Progress</h3>
-          <span className="text-sm font-bold text-red-400">{Math.min(100, courseProgress).toFixed(1)}%</span>
+          <h3 className="text-base sm:text-lg font-semibold text-white">Course Progress</h3>
+          <span className="text-xs sm:text-sm font-bold text-red-400">{Math.min(100, courseProgress).toFixed(1)}%</span>
         </div>
-        <div className="w-full bg-slate-700 rounded-full h-3 mb-2">
+        <div className="w-full bg-slate-700 rounded-full h-2 sm:h-3 mb-2">
           <div
-            className="bg-red-500 h-3 rounded-full transition-all duration-300"
+            className="bg-red-500 h-2 sm:h-3 rounded-full transition-all duration-300"
             style={{ width: `${Math.min(100, courseProgress)}%` }}
           />
         </div>
-        <p className="text-sm text-slate-400">
+        <p className="text-xs sm:text-sm text-slate-400">
           Lessons watched: {Math.round((Math.min(100, courseProgress) / 100) * totalLessons)} of {totalLessons}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-1">
-          <div className="bg-slate-800 rounded-lg shadow-md p-4 border border-slate-700">
-            <h2 className="text-xl font-bold mb-4 text-white">Course Content</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="lg:col-span-1 order-2 lg:order-1">
+          <div className="bg-slate-800 rounded-lg shadow-md p-3 sm:p-4 border border-slate-700">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Course Content</h2>
             <div className="space-y-4">
               {course.modules.map((module) => (
                 <div key={module.id} className="border-b border-slate-700 pb-4 last:border-b-0">
@@ -203,10 +203,10 @@ export default function CourseContent({ course }: CourseContentProps) {
                                 : 'bg-slate-700 hover:bg-slate-600 text-slate-200'
                             }`}
                           >
-                            <div className="flex items-center justify-between">
-                              <span className="text-sm">{lesson.title}</span>
+                            <div className="flex items-center justify-between gap-2">
+                              <span className="text-xs sm:text-sm truncate">{lesson.title}</span>
                               {isLessonDone && (
-                                <span className="text-green-400 ml-2">✓</span>
+                                <span className="text-green-400 ml-2 flex-shrink-0">✓</span>
                               )}
                             </div>
                             {progress && lessonPercent > 0 && (
@@ -228,19 +228,19 @@ export default function CourseContent({ course }: CourseContentProps) {
           </div>
         </div>
 
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 order-1 lg:order-2">
           {selectedLesson ? (
-            <div className="bg-slate-800 rounded-lg shadow-md p-4 border border-slate-700">
-              <h2 className="text-2xl font-bold mb-4 text-white">{selectedLesson.title}</h2>
+            <div className="bg-slate-800 rounded-lg shadow-md p-3 sm:p-4 border border-slate-700">
+              <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white">{selectedLesson.title}</h2>
               {selectedLesson.description && (
-                <p className="text-slate-300 mb-4">{selectedLesson.description}</p>
+                <p className="text-sm sm:text-base text-slate-300 mb-3 sm:mb-4">{selectedLesson.description}</p>
               )}
               
               {videoDuration && (
-                <div className="mb-4">
+                <div className="mb-3 sm:mb-4">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-slate-400">Lesson Progress</span>
-                    <span className="text-sm font-bold text-red-400">{lessonProgressPercent.toFixed(1)}%</span>
+                    <span className="text-xs sm:text-sm text-slate-400">Lesson Progress</span>
+                    <span className="text-xs sm:text-sm font-bold text-red-400">{lessonProgressPercent.toFixed(1)}%</span>
                   </div>
                   <div className="w-full bg-slate-700 rounded-full h-2">
                     <div
@@ -254,7 +254,7 @@ export default function CourseContent({ course }: CourseContentProps) {
                 </div>
               )}
               
-              <div className="aspect-video mb-4 bg-black rounded-lg overflow-hidden">
+              <div className="aspect-video mb-3 sm:mb-4 bg-black rounded-lg overflow-hidden">
                 <ReactPlayer
                   url={selectedLesson.video_url}
                   width="100%"
@@ -313,14 +313,14 @@ export default function CourseContent({ course }: CourseContentProps) {
               </div>
               
               {isCompleted && (
-                <div className="bg-green-900/50 border border-green-500 text-green-200 px-4 py-3 rounded">
+                <div className="bg-green-900/50 border border-green-500 text-green-200 px-3 sm:px-4 py-2 sm:py-3 rounded text-sm sm:text-base">
                   ✓ Lesson completed
                 </div>
               )}
             </div>
           ) : (
-            <div className="bg-slate-800 rounded-lg shadow-md p-8 text-center border border-slate-700">
-              <p className="text-slate-300">Select a lesson to watch</p>
+            <div className="bg-slate-800 rounded-lg shadow-md p-6 sm:p-8 text-center border border-slate-700">
+              <p className="text-slate-300 text-sm sm:text-base">Select a lesson to watch</p>
             </div>
           )}
         </div>

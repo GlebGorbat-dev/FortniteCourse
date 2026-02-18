@@ -68,10 +68,10 @@ export default function GoogleCallbackPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-900 px-4">
-        <div className="bg-slate-800 p-8 rounded-lg shadow-xl w-full max-w-md border border-slate-700 text-center">
-          <div className="text-red-400 mb-4">{error}</div>
-          <p className="text-slate-300">Redirecting to login...</p>
+      <div className="min-h-screen flex items-center justify-center bg-slate-900 px-4 py-8">
+        <div className="bg-slate-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md border border-slate-700 text-center">
+          <div className="text-red-400 mb-4 text-sm sm:text-base">{error}</div>
+          <p className="text-slate-300 text-sm sm:text-base">Redirecting to login...</p>
         </div>
       </div>
     )
@@ -79,9 +79,9 @@ export default function GoogleCallbackPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-900 px-4">
-        <div className="bg-slate-800 p-8 rounded-lg shadow-xl w-full max-w-md border border-slate-700 text-center">
-          <div className="text-white mb-4">Processing Google sign-in...</div>
+      <div className="min-h-screen flex items-center justify-center bg-slate-900 px-4 py-8">
+        <div className="bg-slate-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md border border-slate-700 text-center">
+          <div className="text-white mb-4 text-sm sm:text-base">Processing Google sign-in...</div>
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600 mx-auto"></div>
         </div>
       </div>

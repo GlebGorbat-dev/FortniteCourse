@@ -51,9 +51,9 @@ export default function CoursesPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-white">Courses</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-white">Courses</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {courses.map((course) => (
           <div
             key={course.id}
@@ -66,18 +66,18 @@ export default function CoursesPage() {
                 className="w-full h-48 object-cover"
               />
             )}
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2 text-white">{course.title}</h3>
-              <p className="text-slate-300 mb-4">
+            <div className="p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white">{course.title}</h3>
+              <p className="text-sm sm:text-base text-slate-300 mb-4 line-clamp-2">
                 {course.short_description || course.description}
               </p>
-              <div className="flex justify-between items-center">
-                <span className={`text-2xl font-bold ${course.price === 0 ? 'text-green-400' : 'text-red-400'}`}>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+                <span className={`text-xl sm:text-2xl font-bold ${course.price === 0 ? 'text-green-400' : 'text-red-400'}`}>
                   {course.price === 0 ? 'Free' : `${course.price} ${course.currency}`}
                 </span>
                 <Link
                   href={`/platform/courses/${course.id}`}
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors"
+                  className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors text-center text-sm sm:text-base"
                 >
                   Details
                 </Link>

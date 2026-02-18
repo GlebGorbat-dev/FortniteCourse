@@ -90,17 +90,17 @@ export default function CoursesPreview() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <h2 
           ref={titleRef}
           data-scroll-id="courses-title"
-          className={`text-4xl font-bold text-center mb-12 text-white transition-all duration-1000 ${
+          className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-white transition-all duration-1000 ${
             visibleElements['courses-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           Our courses
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {courses.map((course, index) => (
             <div
               key={course.id}
@@ -124,20 +124,20 @@ export default function CoursesPreview() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
                 </div>
               )}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-white hover:text-red-400 transition-colors duration-300">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white hover:text-red-400 transition-colors duration-300">
                   {course.title}
                 </h3>
-                <p className="text-slate-300 mb-4">
+                <p className="text-sm sm:text-base text-slate-300 mb-4 line-clamp-2">
                   {course.short_description || course.description}
                 </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-red-400">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+                  <span className="text-xl sm:text-2xl font-bold text-red-400">
                     {course.price} {course.currency}
                   </span>
                   <Link
                     href={`/platform/courses/${course.id}`}
-                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-all duration-300 hover:scale-105 hover:shadow-lg text-center text-sm sm:text-base"
                   >
                     Details
                   </Link>
