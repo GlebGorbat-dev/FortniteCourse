@@ -11,7 +11,9 @@ WORKDIR /app
 
 # Copy package files from frontend directory
 COPY frontend/package.json frontend/package-lock.json* ./
-RUN npm ci
+
+# Install dependencies with fallback
+RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps
 
 # Rebuild the source code only when needed
 FROM base AS builder
