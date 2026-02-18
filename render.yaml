@@ -2,12 +2,12 @@
 # Documentation: https://render.com/docs/blueprint-spec
 
 services:
-  # Backend API Service
+  # Backend API Service (Docker Context = repo root so Dockerfile COPY backend/ works)
   - type: web
     name: fortnite-course-backend
     env: docker
     dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    dockerContext: .
     plan: starter
     region: oregon
     buildCommand: ""
