@@ -1,0 +1,13 @@
+# Files to ignore during Render deployment
+.git/
+.gitignore
+*.md
+docs/
+.env*
+docker-compose.yml
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

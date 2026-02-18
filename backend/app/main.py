@@ -1,0 +1,45 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import logging
+from app.core.config import settings
+from app.api.v1 import security, courses, account, progress, resources, auth
+
+# Настройка логирования
+logging.basicConfig(
+    level=logging.DEBUG if settings.ENVIRONMENT == "development" else logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+app = FastAPI(
+    title="Fortnite Course Platform API",
+    description="API для образовательной платформы",
+    version="1.0.0"
+)
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Подключение роутеров
+app.include_router(security.router, prefix="/api/v1/auth", tags=["Security"])
+app.include_router(auth.router, prefix="/api/v1/auth", tags=["Auth"])
+app.include_router(courses.router, prefix="/api/v1/courses", tags=["Courses"])
+app.include_router(account.router, prefix="/api/v1/account", tags=["Account"])
+app.include_router(progress.router, prefix="/api/v1/progress", tags=["Progress"])
+app.include_router(resources.router, prefix="/api/v1/resources", tags=["Resources"])
+
+
+@app.get("/")
+async def root():
+    return {"message": "Fortnite Course Platform API"}
+
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
+
