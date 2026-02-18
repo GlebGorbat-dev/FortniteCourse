@@ -16,13 +16,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS
+# CORS — allow preflight OPTIONS and frontend origin (Render may pass single URL)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Подключение роутеров

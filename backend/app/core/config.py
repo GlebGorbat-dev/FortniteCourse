@@ -1,5 +1,13 @@
 from pydantic_settings import BaseSettings
-from typing import List
+from pydantic import field_validator
+from typing import List, Union
+
+
+def _normalize_cors_origins(v: Union[str, List[str]]) -> List[str]:
+    """Accept CORS_ORIGINS as comma-separated string or list (e.g. from Render env)."""
+    if isinstance(v, str):
+        v = [origin.strip() for origin in v.split(",") if origin.strip()]
+    return v if v else ["http://localhost:3000"]
 
 
 class Settings(BaseSettings):
@@ -38,9 +46,14 @@ class Settings(BaseSettings):
     # Environment
     ENVIRONMENT: str = "development"
     
-    # CORS
+    # CORS — can be comma-separated string (e.g. from Render) or list
     CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:3001"]
-    
+
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def normalize_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
+        return _normalize_cors_origins(v)
+
     class Config:
         env_file = ".env"
         case_sensitive = True
