@@ -5,6 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
+// Force dynamic rendering to avoid prerendering errors
+export const dynamic = 'force-dynamic'
+
 export default function GoogleCallbackPage() {
   const router = useRouter()
   const searchParams = useSearchParams()

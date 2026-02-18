@@ -7,6 +7,9 @@ import { isAuthenticated, removeAuthToken } from '@/lib/auth'
 import CourseContent from '@/components/platform/CourseContent'
 import CourseResources from '@/components/platform/CourseResources'
 
+// Force dynamic rendering for dynamic route
+export const dynamic = 'force-dynamic'
+
 interface CourseDetail {
   id: number
   title: string

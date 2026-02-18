@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Cookies from 'js-cookie'
 
+// Force dynamic rendering to avoid prerendering errors
+export const dynamic = 'force-dynamic'
+
 export default function GoogleSuccessPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
