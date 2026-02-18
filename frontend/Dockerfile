@@ -28,8 +28,8 @@ ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
 ENV NODE_ENV=production
 
-# Build Next.js with error output
-RUN npm run build 2>&1 || (echo "Build failed, showing error:" && cat /app/.next/build.log 2>/dev/null || true && exit 1)
+# Build Next.js
+RUN npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
