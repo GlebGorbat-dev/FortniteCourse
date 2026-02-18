@@ -6,14 +6,19 @@ FROM node:20-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat python3 make g++
 WORKDIR /app
 
 # Copy package files from frontend directory
 COPY frontend/package.json frontend/package-lock.json* ./
 
-# Install dependencies with fallback
-RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+# Install dependencies
+# Try npm ci first (faster, requires exact match), fallback to npm install
+RUN if [ -f package-lock.json ]; then \
+      npm ci --legacy-peer-deps --no-audit || npm install --legacy-peer-deps --no-audit; \
+    else \
+      npm install --legacy-peer-deps --no-audit; \
+    fi
 
 # Rebuild the source code only when needed
 FROM base AS builder
