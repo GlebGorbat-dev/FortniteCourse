@@ -25,7 +25,7 @@ export default function AccountPage() {
     if (!error) return 'Unknown error'
     
     if (error.code === 'ERR_NETWORK' || error.message === 'Network Error') {
-      return 'Could not connect to the server. Make sure the backend is running at http://localhost:8000'
+      return 'Could not connect to the server. Please check your connection and try again.'
     }
     
     if (error.response?.data) {

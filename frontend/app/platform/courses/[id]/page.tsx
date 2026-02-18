@@ -42,9 +42,9 @@ export default function CourseDetailPage() {
   const getErrorMessage = (error: any): string => {
     if (!error) return 'Unknown error'
     
-    if (error.code === 'ERR_NETWORK' || error.message === 'Network Error') {
-      return 'Could not connect to the server. Make sure the backend is running at http://localhost:8000'
-    }
+      if (error.code === 'ERR_NETWORK' || error.message === 'Network Error') {
+        return 'Could not connect to the server. Please check your connection and try again.'
+      }
     
     if (error.response?.data) {
       const data = error.response.data

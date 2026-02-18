@@ -17,7 +17,8 @@ export default function LoginPage() {
     if (!error) return 'Unknown error'
     
     if (error.code === 'ERR_NETWORK' || error.message === 'Network Error') {
-      return 'Could not connect to the server. Make sure the backend is running at http://localhost:8000'
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'the backend server'
+      return `Could not connect to the server. Please check your connection and try again.`
     }
     
     if (error.response?.data) {
